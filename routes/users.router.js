@@ -58,15 +58,15 @@ router.get("/3/:id",(req,res)=>{
 
 //To show an specific user. With services
 router.get("/4/:id",
-validatorHandler(getUserSchema,"params"),
-(req,res,next)=>{
-  try {
-    const { id } = req.params;
-    const user = service.findOne(id);
-    res.json(user);
-  } catch (error) {
-    next(error)
-  }
+  validatorHandler(getUserSchema,"params"),
+  (req,res,next)=>{
+    try {
+      const { id } = req.params;
+      const user = service.findOne(id);
+      res.json(user);
+    } catch (error) {
+      next(error)
+    }
 
 });
 
@@ -91,6 +91,7 @@ router.put("/:id",(req,res)=>{
   });
 });
 
+//To recover password
 router.patch("/:id",
   validatorHandler(getUserSchema,"params"),
   validatorHandler(updateUserSchema, "body"),
@@ -105,14 +106,17 @@ router.patch("/:id",
     res.json(updatedUser);
 });
 
-router.delete("/:id",(req,res)=>{
-  const {id} = req.params;
-  // res.json({
-  //   message: "You just deleted!",
-  //   id: id
-  // });
-  const reply = service.delete(id);
-  res.json(reply);
+//To delete an user
+router.delete("/:id",
+  validatorHandler(getUserSchema,"params"),
+  (req,res)=>{
+    const {id} = req.params;
+    // res.json({
+    //   message: "You just deleted!",
+    //   id: id
+    // });
+    const reply = service.delete(id);
+    res.json(reply);
 });
 
 module.exports = router;
