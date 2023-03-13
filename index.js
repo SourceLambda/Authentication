@@ -1,6 +1,8 @@
 const express = require("express");
 const routerApi = require("./routes");
+
 const {logErrors, errorHandler, boomErrorHandler}= require("./middlewares/error.handler");
+const {checkApiKey} = require("./middlewares/auth.handler");
 
 const app = express();
 const port = 3000;
@@ -11,6 +13,12 @@ app.use(express.json());
 app.get('/',(req,res)=>{
   res.send("Hello this is my first test with NodeJS");
 });
+
+app.get("/test",
+  checkApiKey,
+  (req,res)=>{
+    res.send("It is working!");
+})
 
 //To implement the routing to every responsbility
 routerApi(app);
