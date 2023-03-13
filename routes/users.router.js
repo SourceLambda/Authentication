@@ -48,12 +48,17 @@ router.get('/2',(req,res)=>{
 //To show an specific user
 router.get("/3/:id",(req,res)=>{
   const { id } = req.params;
-  //res.send("This is the id --");
-  res.json({
-    id,
-    name:"Brian",
-    lastname: "Crack"
-  });
+  if (id==='999'){
+    res.status(404).json({
+      message:"not found!"
+    });
+  }else{
+    res.status(200).json({
+      name: "Picked up User",
+      email: "email@",
+      id: id
+    });
+  }
 });
 
 //To show what a client send me
@@ -67,7 +72,7 @@ router.post("/",(req,res)=>{
 
 router.put("/:id",(req,res)=>{
   const {id} = req.params;
-  res.json({
+  res.status(201).json({
     message: "You just updated!",
     id: id
   });
