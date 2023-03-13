@@ -3,6 +3,9 @@ const routerApi = require("./routes");
 const app = express();
 const port = 3000;
 
+//Middleware to receive data in a JSON way
+app.use(express.json());
+
 app.get('/',(req,res)=>{
   res.send("Hello this is my first test with NodeJS");
 });
