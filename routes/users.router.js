@@ -71,14 +71,16 @@ validatorHandler(getUserSchema,"params"),
 });
 
 //To show what a client send me
-router.post("/",(req,res)=>{
-  const body = req.body;
-  const newUser = service.create(body);
-  // res.json({
-  //   message: "Was completed!",
-  //   your_data: body
-  // });
-  res.status(201).json(newUser);
+router.post("/",
+  validatorHandler(createUserSchema,"body"),
+  (req,res)=>{
+    const body = req.body;
+    const newUser = service.create(body);
+    // res.json({
+    //   message: "Was completed!",
+    //   your_data: body
+    // });
+    res.status(201).json(newUser);
 });
 
 router.put("/:id",(req,res)=>{
@@ -89,16 +91,18 @@ router.put("/:id",(req,res)=>{
   });
 });
 
-router.patch("/:id",(req,res)=>{
-  const {id} = req.params;
-  const body =req.body;
-  // res.json({
-  //   message: "You just updated in the second way!",
-  //   id: id
-  // });
-  const updatedUser = service.update(id,body);
-  res.json(updatedUser);
-
+router.patch("/:id",
+  validatorHandler(getUserSchema,"params"),
+  validatorHandler(updateUserSchema, "body"),
+  (req,res)=>{
+    const {id} = req.params;
+    const body =req.body;
+    // res.json({
+    //   message: "You just updated in the second way!",
+    //   id: id
+    // });
+    const updatedUser = service.update(id,body);
+    res.json(updatedUser);
 });
 
 router.delete("/:id",(req,res)=>{

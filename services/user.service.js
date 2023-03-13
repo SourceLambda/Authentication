@@ -19,9 +19,9 @@ class UserService{
     for (let index = 0; index < limit; index++) {
       this.users.push({
         id: faker.datatype.uuid(),
-        name: faker.commerce.productName(),
-        price: parseInt(faker.commerce.price()),
-        image: faker.image.imageUrl()
+        email: faker.internet.email(),
+        password: faker.internet.password(),
+        role: faker.name.jobArea()
       });
     }
   }
