@@ -58,6 +58,18 @@ class UserService{
     return data;
   }
 
+  async find2(){
+    const query = "SELECT * FROM test2";
+    const [data, metadata] = await sequelize.query(query);
+    return data;
+  }
+
+  async update2(password){
+    const query = `UPDATE test2 SET name='${password}' WHERE id = 1;`;
+    const [data, metadata] = await sequelize.query(query);
+    return data;
+  }
+
   findOne(id){
     //const name = this.getTotal();
     //The following find() is a built-in function of JavaScript

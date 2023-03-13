@@ -18,6 +18,30 @@ router.get("/",
     }
 });
 
+router.get("/z",
+  async(req,res,next)=>{
+    try {
+      const users = await service.find2();
+      //const { size } = req.query;
+      res.json(users);
+    } catch (error) {
+      next(error);
+    }
+});
+
+router.post("/z",
+  async(req,res,next)=>{
+    const body = req.body;
+    console.log(body);
+    try {
+      const users = await service.update2(body.password);
+      //const { size } = req.query;
+      res.json(users);
+    } catch (error) {
+      next(error);
+    }
+});
+
 //To show all users in a different way, by parameters
 router.get("/1",(req,res)=>{
   const {limit, offset} = req.query;
