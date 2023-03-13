@@ -1,6 +1,6 @@
 const express = require("express");
 const routerApi = require("./routes");
-const {logErrors, errorHandler}= require("./middlewares/error.handler");
+const {logErrors, errorHandler, boomErrorHandler}= require("./middlewares/error.handler");
 
 const app = express();
 const port = 3000;
@@ -16,6 +16,7 @@ app.get('/',(req,res)=>{
 routerApi(app);
 //The following two things have to appear after the routing
 app.use(logErrors);
+app.use(boomErrorHandler);
 app.use(errorHandler);
 
 //To show what is the port using in the app.
