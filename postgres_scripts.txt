@@ -1,0 +1,8 @@
+CREATE TABLE users(
+	id VARCHAR(200) NOT NULL PRIMARY KEY,
+	email VARCHAR(100) NOT NULL,
+	password VARCHAR(100) NOT NULL,
+	role VARCHAR(100) DEFAULT 'customer',
+	unique(email)
+);
+INSERT INTO users (id, email, password,role) VALUES ('abc','email@','123','customer');

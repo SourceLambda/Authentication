@@ -103,13 +103,18 @@ router.get("/4/:id",
 router.post("/",
   validatorHandler(createUserSchema,"body"),
   (req,res)=>{
-    const body = req.body;
-    const newUser = service.create(body);
-    // res.json({
-    //   message: "Was completed!",
-    //   your_data: body
-    // });
-    res.status(201).json(newUser);
+    try {
+      const body = req.body;
+      const newUser = service.create(body);
+      // res.json({
+      //   message: "Was completed!",
+      //   your_data: body
+      // });
+      res.status(201).json(newUser);
+    } catch (error) {
+      next(error);
+    }
+
 });
 
 router.put("/:id",(req,res)=>{

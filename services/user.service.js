@@ -18,13 +18,25 @@ class UserService{
     // this.pool.on("error",(err)=> console.log(err));
   }
 
-  create(data){
-    const newUser = {
-      id: faker.datatype.uuid(),
-      ...data
+  async create(data){
+    //First implementation
+    // const newUser = {
+    //   id: faker.datatype.uuid(),
+    //   ...data
+    // }
+    // this.users.push(newUser);
+    // return newUser;
+
+    //second implementation
+    const id = faker.datatype.uuid();
+    const role = 'customer';
+    if (data.role){
+      const role = data.role;
     }
-    this.users.push(newUser);
-    return newUser;
+    const query = `INSERT INTO users (id, email, password,role) VALUES ('${id}','${data.email}','${data.password}','${role}');`;
+    const [user, metauser] = await sequelize.query(query);
+    return user;
+
   }
 
   generate(){
