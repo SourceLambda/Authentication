@@ -4,6 +4,7 @@ const boom = require("@hapi/boom");
 //Connection to postgres
 const getConnection = require("../libs/postgres");
 const pool = require("../libs/postgres.pool");
+const sequelize = require ("../libs/sequelize");
 
 class UserService{
 
@@ -11,8 +12,10 @@ class UserService{
   constructor(){
     this.users = [];
     this.generate();
-    this.pool = pool;
-    this.pool.on("error",(err)=> console.log(err));
+
+    //It is necessary in second connection only because sequelize implements pooling byt itself
+    // this.pool = pool;
+    // this.pool.on("error",(err)=> console.log(err));
   }
 
   create(data){
@@ -45,9 +48,14 @@ class UserService{
     // return response.rows;
 
     //Second Connection
+    // const query = "SELECT * FROM test";
+    // const response = await this.pool.query(query);
+    // return response.rows;
+
+    //Third Connection
     const query = "SELECT * FROM test";
-    const response = await this.pool.query(query);
-    return response.rows;
+    const [data, metadata] =  await sequelize.query(query);
+    return data;
   }
 
   findOne(id){
