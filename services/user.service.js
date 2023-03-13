@@ -31,6 +31,7 @@ class UserService{
   }
 
   findOne(id){
+    //const name = this.getTotal();
     //The following find() is a built-in function of JavaScript
     return this.users.find(item => item.id === id);
   }

@@ -55,10 +55,15 @@ router.get("/3/:id",(req,res)=>{
 });
 
 //To show an specific user. With services
-router.get("/4/:id",(req,res)=>{
-  const { id } = req.params;
-  const user = service.findOne(id);
-  res.json(user);
+router.get("/4/:id",(req,res,next)=>{
+  try {
+    const { id } = req.params;
+    const user = service.findOne(id);
+    res.json(user);
+  } catch (error) {
+    next(error)
+  }
+
 });
 
 //To show what a client send me
