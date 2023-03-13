@@ -7,10 +7,15 @@ const router = express.Router();
 const service = new UserService();
 
 //To show random users
-router.get("/",(req,res)=>{
-  const users = service.find();
-  //const { size } = req.query;
-  res.json(users);
+router.get("/",
+  async(req,res,next)=>{
+    try {
+      const users = await service.find();
+      //const { size } = req.query;
+      res.json(users);
+    } catch (error) {
+      next(error);
+    }
 });
 
 //To show all users in a different way, by parameters
