@@ -45,6 +45,7 @@ router.get("/test1",
 
 //To show random users
 router.get("/test2",
+  passport.authenticate("jwt",{session: false}), // False: not using cookies
   async(req,res,next)=>{
     try {
       //const users = await service.find();
