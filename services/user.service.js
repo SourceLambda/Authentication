@@ -5,6 +5,7 @@ const boom = require("@hapi/boom");
 const getConnection = require("../libs/postgres");
 const pool = require("../libs/postgres.pool");
 const sequelize = require ("../libs/sequelize");
+const bcrypt = require("bcrypt");
 
 class UserService{
 
@@ -18,7 +19,7 @@ class UserService{
     // this.pool.on("error",(err)=> console.log(err));
   }
 
-  async create(data){
+  async create(user){
     //First implementation
     // const newUser = {
     //   id: faker.datatype.uuid(),
@@ -28,14 +29,14 @@ class UserService{
     // return newUser;
 
     //second implementation
-    const id = faker.datatype.uuid();
-    const role = 'customer';
-    if (data.role){
-      const role = data.role;
+    var role = 'customer';
+    if (user.role){
+      role = user.role;
     }
-    const query = `INSERT INTO users (id, email, password,role) VALUES ('${id}','${data.email}','${data.password}','${role}');`;
-    const [user, metauser] = await sequelize.query(query);
-    return user;
+    const hash = await bcrypt.hash(user.password,10);
+    const query = `INSERT INTO users (email, password,role) VALUES ('${user.email}','${hash}','${role}');`;
+    const data = await sequelize.query(query);
+    return {message: 'Creation was completed correctly!'};
 
   }
 

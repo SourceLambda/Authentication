@@ -102,10 +102,10 @@ router.get("/4/:id",
 //To show what a client send me
 router.post("/",
   validatorHandler(createUserSchema,"body"),
-  (req,res)=>{
+  async (req,res,next)=>{
     try {
       const body = req.body;
-      const newUser = service.create(body);
+      const newUser = await service.create(body);
       // res.json({
       //   message: "Was completed!",
       //   your_data: body
