@@ -2,6 +2,7 @@ const express = require("express");
 const UserService = require("./../services/user.service");
 const validatorHandler = require("./../middlewares/validator.handler");
 const {createUserSchema,updateUserSchema,getUserSchema} = require("./../schemas/user.schema");
+const passport = require("passport");
 
 const router = express.Router();
 const service = new UserService();
@@ -24,6 +25,31 @@ router.get("/z",
       const users = await service.findByEmail('6@');
       //const { size } = req.query;
       res.json(users);
+    } catch (error) {
+      next(error);
+    }
+});
+
+//To show random users
+router.get("/test1",
+  passport.authenticate("jwt",{session: false}), // False: not using cookies
+  async(req,res,next)=>{
+    try {
+      //const users = await service.find();
+      //const { size } = req.query;
+      await res.send("You have access to Test1");
+    } catch (error) {
+      next(error);
+    }
+});
+
+//To show random users
+router.get("/test2",
+  async(req,res,next)=>{
+    try {
+      //const users = await service.find();
+      //const { size } = req.query;
+      await res.send("You have access to Test2");
     } catch (error) {
       next(error);
     }
