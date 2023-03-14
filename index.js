@@ -20,6 +20,8 @@ app.get("/test",
     res.send("It is working!");
 })
 
+require("./utils/auth");
+
 //To implement the routing to every responsbility
 routerApi(app);
 //The following two things have to appear after the routing

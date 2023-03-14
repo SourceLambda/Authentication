@@ -21,7 +21,7 @@ router.get("/",
 router.get("/z",
   async(req,res,next)=>{
     try {
-      const users = await service.find2();
+      const users = await service.findByEmail('6@');
       //const { size } = req.query;
       res.json(users);
     } catch (error) {

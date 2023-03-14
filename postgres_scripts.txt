@@ -6,3 +6,6 @@ CREATE TABLE users(
 	unique(email)
 );
 INSERT INTO users (id, email, password,role) VALUES ('abc','email@','123','customer');
+
+//To find an specific user
+SELECT * FROM users WHERE email = '1@';

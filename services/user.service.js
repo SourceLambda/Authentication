@@ -40,6 +40,12 @@ class UserService{
 
   }
 
+  async findByEmail(email){
+    const query = `SELECT * FROM users WHERE email = '${email}';`;
+    const [data,metadata] = await sequelize.query(query);
+    return data[0];
+  }
+
   generate(){
     const limit = 100;
     for (let index = 0; index < limit; index++) {
