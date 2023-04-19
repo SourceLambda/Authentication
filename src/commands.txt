@@ -2,3 +2,9 @@ npm i
 npm i nodemon eslint eslint-config-prettier eslint-plugin-prettier prettier -D
 npm run dev
 npm start
+
+Building image:
+sudo docker build -t source_lambda:auth .
+
+Running the container (Don't forget that the second port has to coincide with port in .env and the index.js placed in the root of the project):
+sudo docker run -p 3000:3000 -e DB_USER=admin -e DB_PASSWORD=admin -e DB_HOST=172.18.0.1 -e DB_NAME=mydb -e DB_PORT=5432 -e URL=0.0.0.0:3000 --rm --name source_lambda_app source_lambda:auth
