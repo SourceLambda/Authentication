@@ -1,7 +1,7 @@
 const faker = require("faker");
 const boom = require("@hapi/boom");
 
-//Connection to postgres
+//Connections to postgres
 const getConnection = require("../libs/postgres");
 const pool = require("../libs/postgres.pool");
 const sequelize = require ("../libs/sequelize");

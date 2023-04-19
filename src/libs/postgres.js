@@ -1,3 +1,5 @@
+//This connection isn't the best becuase every client has to create a new connection to connect
+//with the db. Therefore, pooling is the better one becuase it uses only one connection for each one
 const { Client } = require("pg");
 
 async function getConnection(){
@@ -8,7 +10,7 @@ async function getConnection(){
     password: "admin",
     database: "mydb"
   });
-  await client.connect();
+  await client.connect(); //Await appears becuase it returns a promise so I have to use an await
   return client;
 }
 

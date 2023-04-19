@@ -1,3 +1,4 @@
+//This is better than postgres.js but not that good as sequelize.js
 const { Pool } = require("pg");
 const { config } = require("./../config/config");
 

@@ -1,9 +1,9 @@
-//To read all the things that are in .env
+//To read all the things that are in .env. It charges the env variables in the Node process, namely, the below clauses like process.env.NODE_ENV
 require("dotenv").config();
 
 const config = {
   env: process.env.NODE_ENV || "env",
-  port: process.env.PORT || 3000, //So far those are features of the app only
+  port: process.env.PORT || 3000, // This is the port of the ms //So far those are features of the app only
   dbUser: process.env.DB_USER,
   dbPassword: process.env.DB_PASSWORD,
   dbHost: process.env.DB_HOST,
