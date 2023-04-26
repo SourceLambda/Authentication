@@ -1,0 +1,74 @@
+Actividades
+i. Requisitos
+Laboratorio #2 finalizado en su totalidad.
+Ver el siguiente video: GraphQL - Big Picture (Architecture).
+ii. API Gateway
+Componentes
+1. Usar los siguientes componentes de software:
+
+Base de Datos swarch2023i_db (MySQL): puerto 3306.
+
+Microservicio swarch2023i_ms (Python + Django + API-REST): puerto 4000.
+
+API Gateway swarch2023i_ag (JavaScript + Node.js + API-GraphQL): puerto 5000 (Descargar).
+
+2. Desplegar el microservicio y la base de datos, de la misma forma como se realizó en los Laboratorios #1 y #2.
+
+3. Desplegar el API Gateway. Ubicarse en la raíz del proyecto respectivo y ejecutar los siguientes comandos:
+
+docker build -t swarch2023i_ag .
+
+docker run -p 5000:5000 swarch2023i_ag
+
+API-GraphQL
+Abrir el editor gráfico GraphiQL: host:5000/graphiql.
+
+a. Mutations (i)
+1. Crear una categoria y retornar su nombre:
+
+mutation {
+  createCategory(category: {
+    name: "Categoría Jeisson",
+    description: "Descripción - Categoría Jeisson"
+  }) {
+    name
+  }
+}
+2. Actualizar la categoría con id: 1, y retornar su id, nombre y descripción:
+
+mutation {
+  updateCategory(id: 1, category: {
+    name: "Categoría Jeisson"
+    description: "Nueva Descripción - Categoría Jeisson"
+  }) {
+    id
+    name
+    description
+  }
+}
+b. Queries
+1. Consultar únicamente el nombre de todos las categorías:
+
+(Crear categorías adicionales antes de realizar la consulta)
+
+query {
+  allCategories {
+    name
+  }
+}
+2. Consultar el id y el nombre de la categoría con id: 1:
+
+query {
+  categoryById(id: 1) {
+    id
+    name
+  }
+}
+c. Mutations (ii)
+1. Eliminar el usuario con id: 1:
+
+mutation {
+  deleteCategory(id: 1)
+}
+iii. Cola de Mensajes
+Desarrollar el siguiente ejercicio: RabbitMQ Tutorial.
