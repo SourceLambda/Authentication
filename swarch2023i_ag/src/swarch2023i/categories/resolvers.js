@@ -3,11 +3,17 @@ import { url, port, entryPoint } from './server';
 
 const URL = `http://${url}:${port}/${entryPoint}`;
 
-const url_create_user = '172.17.0.1'
-const port_create_user = '3000'
+const url_source_lambda = '172.17.0.1'
+const port_source_lambda = '3000'
 const entryPoint_create_user = 'api/v1/users'
 
-const URL_CREATE_USER = `http://${url_create_user}:${port_create_user}/${entryPoint_create_user}`;
+const URL_CREATE_USER = `http://${url_source_lambda}:${port_source_lambda}/${entryPoint_create_user}`;
+
+const entryPoint_login_user = 'api/v1/auth/login'
+
+const URL_LOGIN_USER = `http://${url_source_lambda}:${port_source_lambda}/${entryPoint_login_user}`;
+
+
 
 const resolvers = {
 	Query: {
@@ -26,6 +32,9 @@ const resolvers = {
 
 		createUser:(_,{ user })=>
 			generalRequest(`${URL_CREATE_USER}/`, 'POST', user),
+
+		loginUser:(_,{ userlogin })=>
+			generalRequest(`${URL_LOGIN_USER}/`, 'POST', userlogin)
 	}
 };
 

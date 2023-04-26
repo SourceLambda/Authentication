@@ -34,6 +34,22 @@ export const userTypeDef=`
   }
 `;
 
+export const userloginTypeDef=`
+  type UserLogin{
+    id: Int!
+    email: String!
+    role: String!
+  }
+  input UserLoginInput{
+    email: String!
+    password: String!
+  }
+`;
+
 export const userMutations =`
   createUser(user: UserInput!): String!
 `;
+
+export const userloginMutations=`
+  loginUser(userlogin: UserLoginInput!):JSON!
+`
