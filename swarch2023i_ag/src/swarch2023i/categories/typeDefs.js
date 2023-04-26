@@ -47,7 +47,7 @@ export const userloginTypeDef=`
 `;
 
 export const userMutations =`
-  createUser(user: UserInput!): String!
+  createUser(user: UserInput!): JSON!
 `;
 
 export const userloginMutations=`
