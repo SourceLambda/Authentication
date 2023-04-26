@@ -10,6 +10,7 @@ import {
 	categoryTypeDef,
 
 	userTypeDef,
+	userQueries,
 	userMutations,
 
 	userloginTypeDef,
@@ -30,7 +31,8 @@ const mergedTypeDefs = mergeSchemas(
 		userloginTypeDef
 	],
 	[
-		categoryQueries
+		categoryQueries,
+		userQueries
 	],
 	[
 		categoryMutations,

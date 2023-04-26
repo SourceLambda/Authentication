@@ -46,10 +46,14 @@ export const userloginTypeDef=`
   }
 `;
 
+export const userQueries = `
+  allUsers:[User]!
+`;
+
 export const userMutations =`
   createUser(user: UserInput!): JSON!
 `;
 
 export const userloginMutations=`
   loginUser(userlogin: UserLoginInput!):JSON!
-`
+`;
