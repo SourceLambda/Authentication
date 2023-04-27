@@ -29,41 +29,41 @@ export async function generalRequest(url, method, body, fullResponse) {
 	}
 }
 
-/**
- * Adds parameters to a given route
- * @param {string} url
- * @param {object} parameters
- * @return {string} - url with the added parameters
- */
-export function addParams(url, parameters) {
-	let queryUrl = `${url}?`;
-	for (let param in parameters) {
-		// check object properties
-		if (
-			Object.prototype.hasOwnProperty.call(parameters, param) &&
-			parameters[param]
-		) {
-			if (Array.isArray(parameters[param])) {
-				queryUrl += `${param}=${parameters[param].join(`&${param}=`)}&`;
-			} else {
-				queryUrl += `${param}=${parameters[param]}&`;
-			}
-		}
-	}
-	return queryUrl;
-}
+// /**
+//  * Adds parameters to a given route
+//  * @param {string} url
+//  * @param {object} parameters
+//  * @return {string} - url with the added parameters
+//  */
+// export function addParams(url, parameters) {
+// 	let queryUrl = `${url}?`;
+// 	for (let param in parameters) {
+// 		// check object properties
+// 		if (
+// 			Object.prototype.hasOwnProperty.call(parameters, param) &&
+// 			parameters[param]
+// 		) {
+// 			if (Array.isArray(parameters[param])) {
+// 				queryUrl += `${param}=${parameters[param].join(`&${param}=`)}&`;
+// 			} else {
+// 				queryUrl += `${param}=${parameters[param]}&`;
+// 			}
+// 		}
+// 	}
+// 	return queryUrl;
+// }
 
-/**
- * Generates a GET request with a list of query params
- * @param {string} url
- * @param {string} path
- * @param {object} parameters - key values to add to the url path
- * @return {Promise.<*>}
- */
-export function getRequest(url, path, parameters) {
-	const queryUrl = addParams(`${url}/${path}`, parameters);
-	return generalRequest(queryUrl, 'GET');
-}
+// /**
+//  * Generates a GET request with a list of query params
+//  * @param {string} url
+//  * @param {string} path
+//  * @param {object} parameters - key values to add to the url path
+//  * @return {Promise.<*>}
+//  */
+// export function getRequest(url, path, parameters) {
+// 	const queryUrl = addParams(`${url}/${path}`, parameters);
+// 	return generalRequest(queryUrl, 'GET');
+// }
 
 /**
  * Merge the schemas in order to avoid conflicts

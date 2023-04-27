@@ -5,9 +5,9 @@ import { makeExecutableSchema } from 'graphql-tools';
 import { mergeSchemas } from './utilities';
 
 import {
-	categoryMutations,
-	categoryQueries,
-	categoryTypeDef,
+	// categoryMutations,
+	// categoryQueries,
+	// categoryTypeDef,
 
 	userTypeDef,
 	userQueries,
@@ -18,24 +18,24 @@ import {
 } from './swarch2023i/categories/typeDefs';
 
 // Right here could appear a new error with the code I just made
-import categoryResolvers from './swarch2023i/categories/resolvers';
-//import userResolvers from './swarch2023i/categories/resolvers';
+//import categoryResolvers from './swarch2023i/categories/resolvers';
+import userResolvers from './swarch2023i/categories/resolvers';
 //import userLoginResolvers from './swarch2023i/categories/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
-		categoryTypeDef,
+		//categoryTypeDef,
 		userTypeDef,
 		userloginTypeDef
 	],
 	[
-		categoryQueries,
+		//categoryQueries,
 		userQueries
 	],
 	[
-		categoryMutations,
+		//categoryMutations,
 		userMutations,
 		userloginMutations
 	]
@@ -46,8 +46,8 @@ export default makeExecutableSchema({
 	typeDefs: mergedTypeDefs,
 	resolvers: merge(
 		{ JSON: GraphQLJSON }, // allows scalar JSON
-		categoryResolvers
-		//userResolvers
+		//categoryResolvers
+		userResolvers
 		//userLoginResolvers
 		//DON'T FORGET PUT userResolvers when I have my apigateway done
 	)
