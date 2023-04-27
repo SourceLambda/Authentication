@@ -15,11 +15,11 @@ import {
 
 	userloginTypeDef,
 	userloginMutations
-} from './swarch2023i/categories/typeDefs';
+} from './auth_ag/typeDefs';
 
 // Right here could appear a new error with the code I just made
 //import categoryResolvers from './swarch2023i/categories/resolvers';
-import userResolvers from './swarch2023i/categories/resolvers';
+import userResolvers from './auth_ag/resolvers';
 //import userLoginResolvers from './swarch2023i/categories/resolvers';
 
 // merge the typeDefs
