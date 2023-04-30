@@ -4,8 +4,10 @@ const routerApi = require("./routes");
 const {logErrors, errorHandler, boomErrorHandler}= require("./middlewares/error.handler");
 const {checkApiKey} = require("./middlewares/auth.handler");
 
+const { config } = require("./config/config");
+
 const app = express();
-const port = 3000;
+const port = config.port;
 
 
 //Middleware to receive data in a JSON way
