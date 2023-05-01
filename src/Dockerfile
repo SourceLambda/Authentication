@@ -16,5 +16,7 @@ COPY . .
 # ENV DB_PORT 5432
 
 #EXPOSE $PORT
+#ARG URL=172.20.0.1:5433
 
-CMD ["npm","start"]
+CMD npm run migrations:run && npm start
+
