@@ -217,7 +217,7 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/node,windows,linux,macos
 
-#commands.txt
+commands.txt
 postgres_data/
 #docker-compose.yml
 #.env
