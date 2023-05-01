@@ -22,3 +22,7 @@ module.exports = {
   'seeders-path':'./db/seeders/'
 }
 
+
+Pretty important:
+The value about PORT that is saved in .env is the port that is gonna use the app inside the contianer
+not outside
