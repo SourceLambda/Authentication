@@ -1,0 +1,13 @@
+1. I use Joi to validate the data that enters the API
+2. I use the models to validate the data related with the db
+
+DB Schema:
+1. The library Model has all of the methods to execute queries, but when I extend it, I can
+modify those methods
+
+
+
+To review:
+1. The way JS import libraries because apparently the following is pretty different:
+  const {setupModels}  = require("./../db/models/index");
+  const setupModels  = require("./../db/models/index");

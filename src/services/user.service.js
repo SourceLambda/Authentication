@@ -7,6 +7,12 @@ const pool = require("../libs/postgres.pool");
 const sequelize = require ("../libs/sequelize");
 const bcrypt = require("bcrypt");
 
+//To use the models
+// Sequilize creates a namespace called models every time I send it setupModels, User.init, where it saves all of the models
+// The name of the model is the name of the class into db/models/user.model.js file
+// models referes to EVERY model, not only the model that's placed in user.model.js
+const { models } = require("./../libs/sequelize");
+
 class UserService{
 
   constructor(){
