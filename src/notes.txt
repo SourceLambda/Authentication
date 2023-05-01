@@ -3,11 +3,22 @@
 
 DB Schema:
 1. The library Model has all of the methods to execute queries, but when I extend it, I can
-modify those methods
-
+modify those methods. Likewise I won't use it because I'm gonna use the ORM to implement the migrations
+but not to implement queries
 
 
 To review:
 1. The way JS import libraries because apparently the following is pretty different:
   const {setupModels}  = require("./../db/models/index");
   const setupModels  = require("./../db/models/index");
+
+
+
+module.exports = {
+  //The tool that helps us with the migrations needs its own config file
+  'config': './db/config.js',
+  'models-path':'./db/models/',
+  'migrations-path':'./db/migrations/',
+  'seeders-path':'./db/seeders/'
+}
+

@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "lint": "eslint"
+    "lint": "eslint",
+    "migrations:generate":"sequelize-cli migration:generate --name",
+    "migrations:run":"sequelize-cli db:migrate",
+    "migrations:revert":"sequelize-cli db:migrate:undo",
+    "migrations:delete":"sequelize-cli db:migrate:undo:all"
   },
   "repository": {
     "type": "git",
@@ -25,7 +29,8 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.22",
-    "prettier": "^2.8.7"
+    "prettier": "^2.8.7",
+    "sequelize-cli": "^6.6.0"
   },
   "dependencies": {
     "@hapi/boom": "^10.0.1",

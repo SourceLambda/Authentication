@@ -17,4 +17,6 @@ COPY . .
 
 #EXPOSE $PORT
 
+RUN npm run migrations:run
+
 CMD ["npm","start"]
