@@ -80,7 +80,7 @@ router.post("/",
 
 //To recover password
 router.post("/recovery",
-  passport.authenticate("jwt",{session: false}),
+  //passport.authenticate("jwt",{session: false}),
   validatorHandler(updateUserSchema,"body"),
   async (req,res,next)=>{
     try {

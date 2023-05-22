@@ -14,7 +14,10 @@ import {
 	userMutations,
 
 	userloginTypeDef,
-	userloginMutations
+	userloginMutations,
+
+	userRecoverTypeDef,
+	userRecoverMutations
 } from './auth_ag/typeDefs';
 
 // Right here could appear a new error with the code I just made
@@ -28,7 +31,8 @@ const mergedTypeDefs = mergeSchemas(
 		'scalar JSON',
 		//categoryTypeDef,
 		userTypeDef,
-		userloginTypeDef
+		userloginTypeDef,
+		userRecoverTypeDef
 	],
 	[
 		//categoryQueries,
@@ -37,7 +41,8 @@ const mergedTypeDefs = mergeSchemas(
 	[
 		//categoryMutations,
 		userMutations,
-		userloginMutations
+		userloginMutations,
+		userRecoverMutations
 	]
 );
 
