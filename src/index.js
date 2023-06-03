@@ -1,5 +1,6 @@
 const express = require("express");
 const routerApi = require("./routes");
+const ldap = require("ldapjs");
 
 const {logErrors, errorHandler, boomErrorHandler}= require("./middlewares/error.handler");
 const {checkApiKey} = require("./middlewares/auth.handler");
@@ -14,7 +15,8 @@ const port = config.port;
 app.use(express.json());
 
 app.get('/',(req,res)=>{
-  res.send("Hello this is my first test with NodeJS");
+  res.send("Source Lambda is working!");
+  authenticateDN("cn=admin,dc=arqsoft,dc=unal,dc=edu,dc=co","admin");
 });
 
 app.get("/test",
@@ -36,3 +38,21 @@ app.use(errorHandler);
 app.listen(port,()=>{
   console.log("This is working!");
 });
+
+
+function authenticateDN(username,password){
+  const client = ldap.createClient({
+    url: ['ldap://172.30.0.1:389', 'ldap://172.30.0.1:636']
+  });
+
+  client.bind(username,password, (err) => {
+    if(err){
+      console.log(`Error in new connection ${err}`);
+    }else{
+      console.log("Authenticate with LDAP is a successed!");
+    }
+  });
+
+};
+
+

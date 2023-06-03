@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
+    "mondongo": "nodemon index.js",
     "start": "node index.js",
     "lint": "eslint",
-    "migrations:generate":"sequelize-cli migration:generate --name",
-    "migrations:run":"sequelize-cli db:migrate",
-    "migrations:revert":"sequelize-cli db:migrate:undo",
-    "migrations:delete":"sequelize-cli db:migrate:undo:all"
+    "migrations:generate": "sequelize-cli migration:generate --name",
+    "migrations:run": "sequelize-cli db:migrate",
+    "migrations:revert": "sequelize-cli db:migrate:undo",
+    "migrations:delete": "sequelize-cli db:migrate:undo:all"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "faker": "^5.5.3",
     "joi": "^17.8.3",
     "jsonwebtoken": "^9.0.0",
+    "ldapjs": "^3.0.2",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
