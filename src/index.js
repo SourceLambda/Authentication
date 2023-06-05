@@ -16,7 +16,10 @@ app.use(express.json());
 
 app.get('/',(req,res)=>{
   res.send("Source Lambda is working!");
-  authenticateDN("cn=admin,dc=arqsoft,dc=unal,dc=edu,dc=co","admin");
+  //"arqsoft.unal.edu.co"
+  //cn=bchaparro@unal.edu.co,ou=sa,dc=arqsoft,dc=unal,dc=edu,dc=co
+  //authenticateDN("cn=admin,dc=arqsoft,dc=unal,dc=edu,dc=co","admin");
+  authenticateDN("cn=bchaparro@unal.edu.co,ou=sa,dc=arqsoft,dc=unal,dc=edu,dc=co","1234");
 });
 
 app.get("/test",
@@ -49,7 +52,7 @@ function authenticateDN(username,password){
     if(err){
       console.log(`Error in new connection ${err}`);
     }else{
-      console.log("Authenticate with LDAP is a successed!");
+      console.log("Authentication with LDAP is a success!");
     }
   });
 
