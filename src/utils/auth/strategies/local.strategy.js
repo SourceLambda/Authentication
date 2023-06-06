@@ -47,7 +47,7 @@ const LocalStrategy = new Strategy({
       //"arqsoft.unal.edu.co"
       //cn=bchaparro@unal.edu.co,ou=sa,dc=arqsoft,dc=unal,dc=edu,dc=co
       //authenticateDN("cn=admin,dc=arqsoft,dc=unal,dc=edu,dc=co","admin");
-      const ldapRespose = await authenticateDN(`cn=${email},ou=sa,dc=arqsoft,dc=unal,dc=edu,dc=co`,`${password}`);
+      const ldapRespose = await authenticateDN(`cn=${email},ou=sa,dc=sourcelambda,dc=unal,dc=edu,dc=co`,`${password}`);
 
       if(!ldapRespose){
         done(boom.unauthorized("LDAP authentication failed, but it worked in the first part of Authentication"),false);

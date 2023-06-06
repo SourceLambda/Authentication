@@ -1,13 +1,13 @@
 version: '2.1'
 services:
-  swarch2023i-ldap:
+  sourcelambda-ldap:
     image: osixia/openldap:1.1.8
-    container_name: swarch2023i_ldap
+    container_name: sourcelambda_ldap
     environment:
       COMPOSE_HTTP_TIMEOUT: 200
       LDAP_LOG_LEVEL: "256"
-      LDAP_ORGANISATION: "Software Architecture"
-      LDAP_DOMAIN: "arqsoft.unal.edu.co"
+      LDAP_ORGANISATION: "Source Lambda"
+      LDAP_DOMAIN: "sourcelambda.unal.edu.co"
       LDAP_BASE_DN: ""
       LDAP_ADMIN_PASSWORD: "admin"
       LDAP_CONFIG_PASSWORD: "config"
@@ -38,14 +38,14 @@ services:
     ports:
       - "389:389"
       - "636:636"
-    hostname: "arqsoft.unal.edu.co"
+    hostname: "sourcelambda.unal.edu.co"
   phpldapadmin:
     image: osixia/phpldapadmin:latest
     container_name: ldap_client
     environment:
-      PHPLDAPADMIN_LDAP_HOSTS: "swarch2023i-ldap"
+      PHPLDAPADMIN_LDAP_HOSTS: "sourcelambda-ldap"
       PHPLDAPADMIN_HTTPS: "false"
     ports:
       - "8085:80"
     links:
-      - swarch2023i-ldap
+      - sourcelambda-ldap
