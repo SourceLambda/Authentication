@@ -12,7 +12,7 @@ Running the container with a COMPLETE PORT(Don't forget that the second port has
 sudo docker run -p 3000:3000 -e DB_USER=admin -e DB_PASSWORD=admin -e DB_HOST=172.20.0.1 -e DB_NAME=mydb -e DB_PORT=5432 -e URL=0.0.0.0:3000 --rm --name source_lambda_app source_lambda:auth
 
 Simple commands to run it:
-sudo docker run -p 3001:3000 -e DB_HOST=172.18.0.1 --rm --name source_lambda_app source_lambda:auth
+sudo docker run -p 3001:3000 -e DB_HOST=172.27.0.1 -e LDAP_IP=172.30.0.1 --rm --name source_lambda_app bchaparro11/source_lambda_auth:linux_test
 sudo docker run -p 3001:3000 -e DB_HOST=172.27.0.1 --rm --name source_lambda_app bchaparro11/source_lambda_auth:linux
 
 
