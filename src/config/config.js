@@ -11,6 +11,9 @@ const config = {
   dbPort: process.env.DB_PORT,
   apiKey: process.env.API_KEY,
   jwtSecret: process.env.JWT_SECRET,
+  ldapIp:process.env.LDAP_IP,
+  ldapFirstPort:process.env.LDAP_FIRST_PORT,
+  ldapSecondPort:process.env.LDAP_SECOND_PORT
 }
 
 module.exports = {config};

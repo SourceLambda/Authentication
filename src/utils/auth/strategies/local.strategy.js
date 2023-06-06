@@ -4,14 +4,15 @@ const boom = require("@hapi/boom");
 
 const UserService = require("../../../services/user.service");
 
-const ldap = require("ldapjs");
-
 const service = new UserService();
+
+const ldap = require("ldapjs");
+const {config} = require("./../../../config/config");
 
 const authenticateDN = (username, password) => {
   return new Promise((resolve, _ ) => {
     const client = ldap.createClient({
-      url: ['ldap://172.30.0.1:389', 'ldap://172.30.0.1:636']
+      url: [`ldap://${config.ldapIp}:${config.ldapFirstPort}`, `ldap://${config.ldapIp}:${config.ldapSecondPort}`]
     });
 
     client.bind(username, password, (err) => {
