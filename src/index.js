@@ -19,7 +19,7 @@ app.get('/',(req,res)=>{
   //"arqsoft.unal.edu.co"
   //cn=bchaparro@unal.edu.co,ou=sa,dc=arqsoft,dc=unal,dc=edu,dc=co
   //authenticateDN("cn=admin,dc=arqsoft,dc=unal,dc=edu,dc=co","admin");
-  authenticateDN("cn=bchaparro@unal.edu.co,ou=sa,dc=arqsoft,dc=unal,dc=edu,dc=co","1234");
+  authenticateDN("cn=bchaparro@unal.edu.co,ou=sa,dc=sourcelambda,dc=unal,dc=edu,dc=co","123");
 });
 
 app.get("/test",

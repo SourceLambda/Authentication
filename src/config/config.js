@@ -13,7 +13,8 @@ const config = {
   jwtSecret: process.env.JWT_SECRET,
   ldapIp:process.env.LDAP_IP,
   ldapFirstPort:process.env.LDAP_FIRST_PORT,
-  ldapSecondPort:process.env.LDAP_SECOND_PORT
+  ldapSecondPort:process.env.LDAP_SECOND_PORT,
+  dbMongoURI:process.env.DB_MONGO_URI
 }
 
 module.exports = {config};

@@ -85,6 +85,7 @@ router.post("/recovery",
   async (req,res,next)=>{
     try {
       const body = req.body;
+
       const newPassword = await service.update(body.email,body.password);
       // res.json({
       //   message: "Was completed!",
@@ -95,5 +96,17 @@ router.post("/recovery",
       next(error);
     }
 });
+
+router.get("/byemail",
+  async (req,res,next)=>{
+    try {
+      const body = req.body;
+      const data = await service.findByEmail(body.email);
+      res.json(data);
+    }catch (error){
+      next(error);
+    }
+  }
+);
 
 module.exports = router;

@@ -35,7 +35,7 @@ const LocalStrategy = new Strategy({
     try {
       const user = await service.findByEmail(email);
 
-      if (!user) {
+      if (user===null) {
         done(boom.unauthorized(),false);
       }
 
@@ -49,6 +49,8 @@ const LocalStrategy = new Strategy({
       //cn=bchaparro@unal.edu.co,ou=sa,dc=arqsoft,dc=unal,dc=edu,dc=co
       //authenticateDN("cn=admin,dc=arqsoft,dc=unal,dc=edu,dc=co","admin");
       //cn=admin,dc=sourcelambda,dc=unal,dc=edu,dc=co"
+
+
       const ldapRespose = await authenticateDN(`cn=${email},ou=sa,dc=sourcelambda,dc=unal,dc=edu,dc=co`,`${password}`);
 
       if(!ldapRespose){
