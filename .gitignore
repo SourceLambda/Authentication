@@ -219,6 +219,6 @@ $RECYCLE.BIN/
 
 commands.txt
 postgres_data/
-src/.env
+**.env
 #docker-compose.yml
 

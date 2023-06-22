@@ -18,5 +18,5 @@ COPY . .
 #EXPOSE $PORT
 #ARG URL=172.20.0.1:5433
 
-CMD npm run migrations:run && npm start
+CMD npm start
 
